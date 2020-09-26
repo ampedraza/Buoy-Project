@@ -1,0 +1,119 @@
+---
+title: "Buoy Project Report"
+author: "Alison MA615"
+date: "9/24/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## The Boston Buoy Analysis Project: A study of global Warming detection from a single buoy
+
+<p style="font-size:18px">
+Introduction to Boston Buoy Analysis Project:
+	The Boston Buoy Analysis Project is a class project in which our team participated. The goal of the project was to determine if we could find evidence of global warming from the data gathered by a single buoy. Global warming, the gradual increase in the earth's temperature due to the greenhouse effect caused by the increase in carbon dioxide, nitrous oxide, and other harmful gasses. These increases, mostly due to the increase in human activity since the mid 20th century, are causing the changes in atmospheric temperature and as a result are creating climate change.</p>
+
+<br>
+
+<p style="font-size:18px">
+	The buoy, station 44013, located in Boston Harbor, does a daily hourly recording of a number of variables, such as wave height, wind speed, and water temperature. Our team decided to analyze the change in atmospheric temperature from 1998 to 2018 to see if global warming could be detected.
+</p>	
+
+<br><br>
+
+<p style="font-size:20px"><strong>Buoy Location and Link to ndbc/noaa Site 44013</strong></p>
+
+<br><br>
+
+<p style="font-size:18px"><strong>
+<a href="https://www.ndbc.noaa.gov/station_history.php?station=44013">NDBC government station link</a>
+</strong></p>
+
+<br>
+
+<p style="font-size:20px">Location:</p>
+<br>
+```{r fig.align='center', fig.height = 3}
+library(jpeg)
+library(grid)
+img= readJPEG("BostonBuoyLocation2.jpg")
+grid.raster(img)
+
+
+
+```
+<br><br><br>
+<h2>The First For Loop Code: used to extract data from web site and make table</h2>
+<p style="font-size:18px">
+  The data was gathered from the National Oceanic and Atmospheric Adminitration's National Data Buoy Center website. In order to get the data from the website for each year, we used the following code to extract the data from each url and form a table. We did find some difficulty in this area since the formatting was not consistent throught out the years and there were some missing data (i.e., NA) in 2007. </p>
+<br>
+ 
+```{r fig.align='center', fig.height=3}
+library(jpeg)
+library(grid)
+img= readJPEG("ForLoop1.jpg")
+grid.raster(img)
+
+
+```
+  
+<br><br>
+<h2>The Second For Loop Code: used to create a data frame</h2>
+<p style="font-size:18px">
+  The second for loop allowed us to take out the data we needed to make the data frame. We decided to narrow down the analytic search to a specific time of day inorder to keep the comparison straightforward. We decided on 2pm and created an average atmospheric temperature with the measurements found at that time.
+  
+```{r fig.align='center', fig.height=3}
+library(jpeg)
+library(grid)
+img= readJPEG("ForLoop2.jpg")
+grid.raster(img)
+
+
+```
+<br><br><br>
+
+<h2>Graphs of Each Month</h2>
+<p style="font-size:18px">
+
+  There are many different ways we could have analyzed this data. We decided to look at the average atmospheric temperature for each month and compare that value with the average temperature of the same month in the subsequent years. By doing this, we were interested to see if we could detect a pattern of change that spanned the entire 21 years. </p>
+  
+<p style="font-size:18px">
+  From the below graphs, it is possible to see that there is in fact a discernible pattern in the average atmospheric temperature from year to year for each month. The coordinate system for the graphs are years on the X-axis and Celsius degrees on the y-axis. </p>
+
+
+```{r fig.align='center', fig.height=4}
+library(png)
+library(grid)
+
+img= readPNG("MonthlyChart3.png")
+
+grid.raster(img)
+```
+
+<br><br><br>
+
+<h1 style="font-size:22px"> Months with Most Significant Trend </h>
+
+<p style="font-size:18px">
+
+  Although almost all the months show an increase in the average monthly temperature for those twenty years, the most dramatic increases seem to be for the summer and early fall months. As the graphs below illustrate, the months of July, August, September, and October. If we follow the regression line, we see that there is about a 2 degree Celsius or more increase in average temperature from 1998 to 2018. </p>
+
+```{r}
+library(jpeg)
+img= readJPEG("JulAugSepOct.jpg")
+grid.raster(img)
+
+```
+
+## Conclusion
+
+<p style="font-size:18px">
+
+  From our analysis of the buoy data, taking the average atmospheric temperature of each month did allow us to see a trend in the data which showed an increase in the atmospheric temperature over 21 years. In doing the graphs, we left the confidence interval to show that there is some error included with our model. This could be due to a few reasons such as missing data from 6 months in 2007. It could also be due to picking only one time (2pm) every day to analyze. It would be good to pick a range of times, such as 9am to 12pm, or included all 24 hours for each day of the month in order to get a more accurate reading. Despite this, our group was surprised to see that such a direct and simple device that records atmospheric temperature would help us show that that global warming has been happening for the past 21 years. 
+
+<br><br><br>
+
+
